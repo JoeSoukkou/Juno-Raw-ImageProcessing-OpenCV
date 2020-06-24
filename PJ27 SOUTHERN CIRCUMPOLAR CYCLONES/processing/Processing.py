@@ -2,10 +2,11 @@
 
 import numpy as np
 import cv2 as cv
-from matplotlib import pyplot as plt
-imgL = cv.imread('ImageSet/JNCE_2020154_27C00059_V01-mapprojected.png',0)
-imgR = cv.imread('ImageSet/JNCE_2020154_27C00059_V01-red.png',0)
-stereo = cv.StereoBM_create(numDisparities=16, blockSize=15)
-disparity = stereo.compute(imgL,imgR)
-plt.imshow(disparity,'gray')
-plt.show()
+
+img = cv.imread('ImageSet/JNCE_2020154_27C00059_V01-mapprojected.png')
+img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+img2 = cv.cvtColor(img, cv.COLOR_BGR2HLS_FULL)
+cv.imshow('BGR2RGB', img)
+cv.imshow('BGR2HLS_FULL', img2)
+cv.waitKey(0)
+cv.destroyAllWindows() 
